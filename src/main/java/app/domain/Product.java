@@ -8,6 +8,14 @@ public class Product {
     private String name;
     private double price;
 
+    public Product(Long id, boolean isActive, String name, double price) {
+        this.isActive = isActive;
+        this.name = name;
+        this.price = price;
+    }
+
+    public void setId(long l) {
+    }
     public Long getId() {
         return id;
     }
@@ -16,12 +24,24 @@ public class Product {
         return isActive;
     }
 
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public double getPrice() {
         return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @Override
@@ -46,13 +66,5 @@ public class Product {
                 '}';
     }
 
-    public Product(Long id, boolean isActive, String name, double price) {
-        this.id = id;
-        this.isActive = isActive;
-        this.name = name;
-        this.price = price;
 
-
-
-    }
 }
