@@ -2,11 +2,23 @@ package app.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
+//POJO - Plain Old Java Object
 public class Customer {
-    private final Long id;
+    private Long id;
     private boolean isActive;
     private String name;
-    private final List<Product> products; = new ArrayList<>();
+    private final List<Product> products = new ArrayList<>();
+
+    public Customer(boolean isActive, String name) {
+        this.isActive = isActive;
+        this.name = name;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Long getId() {
         return id;
@@ -32,14 +44,25 @@ public class Customer {
         return products;
     }
 
-    public Customer(List<Product> products, String name, boolean isActive, Long id) {
-        this.products = products;
-        this.name = name;
-        this.isActive = isActive;
-        this.id = id;
-
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Customer)) return false;
+        Customer customer = (Customer) o;
+        return isActive == customer.isActive && Objects.equals(id, customer.id) && Objects.equals(name, customer.name) && Objects.equals(products, customer.products);
     }
 
-    public void setId(long l) {
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, isActive, name, products);
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", isActive=" + isActive +
+                ", name='" + name + '\'' +
+                ", products=" + products +
+                '}';
     }
 }
