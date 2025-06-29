@@ -14,6 +14,17 @@ public class Product {
         this.price = price;
     }
 
+    public Product(Long id, String name, double price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+
+    public Product(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -60,11 +71,10 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "\u001B[32m"+"                            Product: " +
                 "id=" + id +
                 ", isActive=" + isActive +
                 ", name='" + name + '\'' +
-                ", price=" + price +
-                '}';
+                ", price=" + price  + "\u001B[0m";
     }
 }

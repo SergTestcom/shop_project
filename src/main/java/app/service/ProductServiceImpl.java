@@ -48,7 +48,7 @@ public class ProductServiceImpl implements ProductService {
         Product product = repository.findById(id);
 
         if (product == null || !product.isActive()) {
-            throw new ProductNotFoundException("Product with id = " + id + " nor found");
+            throw new ProductNotFoundException("Product with id = " + id + " not found");
         }
         return product;
     }
@@ -97,7 +97,12 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void restoreById(Long id) {
-        getById(id).setActive(true);
+        Product product = repository.findById(id);
+
+        if (product == null) {
+            throw new ProductNotFoundException("Product with id = " + id + " not found");
+        }
+        product.setActive(true);
     }
 
     @Override
